@@ -7,6 +7,7 @@
 #include "DrawDebugHelpers.h"
 #include "Kismet/GameplayStatics.h"
 #include "Weapon/Components/STUWeaponFXComponent.h"
+#include "NiagaraSystem.h"
 
 ASTUProjectile::ASTUProjectile()
 {
@@ -48,10 +49,12 @@ void ASTUProjectile::OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* 
 	MovementComponent->StopMovementImmediately();
 
 	UGameplayStatics::ApplyRadialDamage(GetWorld(), DamageAmount, GetActorLocation(), DamageRadius, UDamageType::StaticClass(), {GetOwner()}, this, GetController(), DoFullDamage);
-	//DrawDebugSphere(GetWorld(), GetActorLocation(), DamageRadius, 24, FColor::Red, false, LifeSeconds);
+	// DrawDebugSphere(GetWorld(), GetActorLocation(), DamageRadius, 24, FColor::Red, false, LifeSeconds);
 	WeaponFXComponent->PlayImpactFX(Hit);
+	CollisionComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-	Destroy();
+	SetLifeSpan(5.0f);
+	// Destroy();
 }
 
 AController* ASTUProjectile::GetController() const
