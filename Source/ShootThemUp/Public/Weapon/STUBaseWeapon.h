@@ -28,6 +28,7 @@ public:
 	void ChangeClip();
 	bool CanReload() const;
 	void LogAmmo();
+	bool IsAmmoEmpty() const;
 	bool IsClipEmpty() const;
 	bool IsClipFull() const;
 
@@ -67,7 +68,6 @@ protected:
 	void MakeHit(FHitResult& HitResult, const FVector& TraceStart, const FVector& TraceEnd);
 
 	void DecreaseAmmo();
-	bool IsAmmoEmpty() const;
 	bool IsAmmoFull() const;
 
 	UNiagaraComponent* SpawnMuzzleFX();
