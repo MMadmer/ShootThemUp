@@ -84,6 +84,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Movement")
 	float GetMovementDirection() const;
 
+	virtual void OnDeath();
+
 
 private:
 	FTimerHandle UnblockMovementHandle;
@@ -94,7 +96,6 @@ private:
 	void OnStartRunning();
 	void OnStopRunning();
 
-	void OnDeath();
 	void OnHealthChanged(float Health, float HealthDelta);
 
 	UFUNCTION()
