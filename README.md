@@ -1,2 +1,2 @@
 # ShootThemUp
-First UE game with Udemy course
+UE game with Udemy course
